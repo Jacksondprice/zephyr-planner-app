@@ -1,0 +1,14 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zephyr-planner-app
+spec:
+  replicas: 2
+  template:
+    spec:
+      containers:
+        - name: app
+          image: ghcr.io/jacksondprice/zephyr-planner-app:1.4.0
+          envFrom:
+            - secretRef:
+                name: app-secrets
